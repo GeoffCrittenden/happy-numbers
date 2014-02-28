@@ -15,11 +15,10 @@ class HappyNumber
 
   private
 
-  def solve_happiness(number)
+  def solve_happiness(number, sum = 0)
     if check_repeats(number)
       return
     else
-      sum = 0
       length(number).times do |index|
         sum += square(number.to_s[index])
       end
