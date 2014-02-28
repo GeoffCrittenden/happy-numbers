@@ -1,9 +1,9 @@
 class HappyNumber
-  attr_reader :repeats
+  attr_reader :sums
 
   def initialize(number)
     @happiness = false
-    @repeats   = []
+    @sums      = []
 
     solve_happiness(number.to_i)
   end
@@ -15,14 +15,12 @@ class HappyNumber
 
   private
 
-  def solve_happiness(number, sum = 0)
+  def solve_happiness(number)
     if check_repeats(number)
       return
     else
-      length(number).times do |index|
-        sum += square(number.to_s[index])
-      end
-      @repeats << number
+      sum = sum_squared_digits(number)
+      @sums << number
       if sum == 1
         @happiness = true
       else
@@ -31,16 +29,23 @@ class HappyNumber
     end
   end
 
+  def check_repeats(number)
+    @sums.include?(number)    
+  end
+
+  def sum_squared_digits(number, sum = 0)
+    length(number).times do |index|
+      sum += square(number.to_s[index])
+    end
+    sum
+  end
+
   def length(number)
     number.to_s.length    
   end
 
   def square(digit)
     digit.to_i * digit.to_i    
-  end
-
-  def check_repeats(number)
-    @repeats.include?(number)    
   end
 
 end

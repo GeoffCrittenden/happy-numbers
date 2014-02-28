@@ -2,7 +2,7 @@ require_relative 'happy_number'
 
 if ARGV[0]
   num = HappyNumber.new(ARGV[0])
-  p num.repeats
+  p num.sums
   puts num.is_happy?
 else
   numbers = []
