@@ -19,8 +19,8 @@ class HappyNumber
     if check_repeats(number)
       return
     else
-      sum = sum_squared_digits(number)
       @sums << number
+      sum = sum_squared_digits(number)
       if sum == 1
         @happiness = true
       else
